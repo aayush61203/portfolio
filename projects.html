@@ -155,6 +155,8 @@
 
         // Sort repos by predefined order, if not found, add them at last
         const orderedRepos = [];
+          // Add this array with repo names you want to exclude
+        const excludedRepos = ['portfolio']; // Add more repo names to exclude as needed
 
         // Add repos that are in predefinedOrder
         predefinedOrder.forEach(repoName => {
@@ -171,6 +173,7 @@
 
         // Create project cards for each repo in orderedRepos
         orderedRepos.forEach(repo => {
+          if (excludedRepos.includes(repo.name)) return; // Skip excluded repos
           const card = document.createElement('div');
           card.className = 'project-card';
 
