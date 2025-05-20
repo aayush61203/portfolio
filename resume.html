@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link id="favicon" rel="icon" href="my-pic.jpg" type="image/jpg">
+  <script>
+    setInterval(() => document.getElementById('favicon').href = 'my-pic.jpg?' + new Date().getTime(), 1000);
+  </script>
+  <title>Resume | Aayush Shah</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="header-footer.js" defer></script>
+  <script src="sidebar.js" defer></script>
+  <script src="theme.js" defer></script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f1f1f1;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: auto;
+      margin-top: 69px;
+      margin-bottom: 75px;
+      text-align: center;
+    }
+
+    /* PDF Preview */
+    .pdf-preview {
+      width: 100%;
+      max-width: 100%;
+      height: 66vh;
+      border: 200px var(--accent-color);
+      box-shadow: 0 0 20px var(--accent-color);
+      border-radius: 10px;
+    }
+
+    </style>
+</head>
+<body>
+  <div id="header"></div>
+  <main class="animate-contact">
+    <!-- PDF Preview -->
+    <embed src="Aayush Shah Resume.pdf" type="application/pdf" class="pdf-preview" />
+  </main>
+    <div id="footer"></div>
+</body>
+
+</html>

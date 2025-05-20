@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link id="favicon" rel="icon" href="my-pic.jpg" type="image/jpg">
+  <script>
+    setInterval(() => document.getElementById('favicon').href = 'my-pic.jpg?' + new Date().getTime(), 1000);
+  </script>
+  <title>Home | Aayush Shah</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="header-footer.js" defer></script>
+  <script src="sidebar.js" defer></script>
+  <script src="theme.js" defer></script>
+
+  <!-- Internal styles for sticky layout and home content -->
+  <style>
+    /* Sticky header and footer */
+    
+
+    /* Add spacing for sticky header/footer */
+    body {
+      margin-top: 5px;
+      padding-top: 0px;
+      padding-bottom: 10px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .home {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      color: #f0f0f0;
+    }
+
+    .animated-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #00bcd4;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .intro {
+      font-size: 1.3rem;
+      color: #bbb;
+      margin-bottom: 30px;
+    }
+
+    .home-content {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px var(--accent-color);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: left;
+      color: #e0e0e0;
+      margin-top: 20px;
+    }
+
+    .home-content strong {
+      color: #00e676;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <main class="animate-contact">
+    <section class="home">
+      <h1 class="animated-text">Aayush Shah's Portfolio</h1>
+      <p class="intro">Explore my digital presence in <strong>cybersecurity, cloud, and development.</strong></p>
+
+      <div class="home-content">
+        <p>This portfolio showcases a wide range of <strong>projects, certifications, and technical skills</strong> that reflect a journey through continuous learning and practical experience in the tech world.</p>
+
+        <p>You’ll find hands-on work in areas like <strong>network security</strong>, <strong>web development</strong>, and <strong>penetration testing</strong> — backed by recognized certifications and academic pursuit in <strong>Cybersecurity</strong>.</p>
+
+        <p>The goal of this site is not only to highlight accomplishments but also to connect with like-minded individuals, collaborators, and organizations who value innovation and security in technology.</p>
+
+        <p>Use the navigation above to explore more about my <strong>background</strong>, <strong>skills</strong>, and <strong>real-world projects</strong>.</p>
+        <p>Feel free to reach out for collaboration, inquiries, or just a friendly chat about technology and its future!</p>
+        
+      </div>
+    </section>
+    <br>
+  </main>
+
+  <div id="footer"></div>
+</body>
+</html>

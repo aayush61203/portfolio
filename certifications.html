@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link id="favicon" rel="icon" href="my-pic.jpg" type="image/jpg">
+  <script>
+    setInterval(() => document.getElementById('favicon').href = 'my-pic.jpg?' + new Date().getTime(), 1000);
+  </script>
+  <title>Certificates | Aayush Shah</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="header-footer.js" defer></script>
+  <script src="theme.js" defer></script>
+  <script src="sidebar.js" defer></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin-top: 55px;
+      margin-bottom: 90px;
+    }
+    main {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+     /* .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+    } */
+
+    /* .category {
+      margin-bottom: 30px;
+    } */
+     h1 {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 2.5rem;
+      color: var(--accent-color);
+    }
+
+    h2 {
+      margin-top: 50px;
+      font-size: 2rem;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 15px;
+      margin-bottom: 20px;
+    }
+   
+    .certi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      max-width: 380px;
+      transition: height 0.3s;
+      height: auto;
+      width: auto;
+      border: 1px solid var(--accent-color);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 8px var(--accent-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      word-wrap: break-word;
+      overflow-wrap: break-word
+    }
+    
+     .card:hover {
+     transform: scale(1.03);
+      box-shadow: 0 0 13px var(--accent-color);
+    }
+
+    .card-name h3 {
+       color: var(--accent-color);
+    }
+    .card-button {
+      margin-top: 10px;
+    }
+    .view-more {
+      display: inline-block;
+      font-size: 14px;
+      color: #e9eaec;
+      text-decoration: none;
+      margin-top: 10px;
+      padding: 2px;
+      border: 5px solid var(--accent-color);
+      background-color: var(--accent-color);
+      border-radius: 10px;
+    }
+    .view-more:hover {
+      display: inline-block;
+      font-size: 14px;
+      color: #e9eaec;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 10px;
+      border: 5px solid #007BFF;
+      background-color: #007BFF;
+      border-radius: 10px;
+    }
+    .details {
+      display: none;
+      margin-top: 10px;
+    }
+    .details p {
+      margin: 5px 0;
+      color: #ccc;
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+    .view-certificate {
+      margin-top: 10px;
+      color: var(--accent-color);
+      text-decoration: none;
+      text-align: center;
+    }
+    .view-certificate:hover {
+      margin-top: 10px;
+      color: var(--accent-color);
+      text-decoration: underline;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <main class="animate-contact">
+    <h1 class="animated-text">Certifications</h1>
+    <!-- Cybersecurity Category -->
+     <h2 class="animated-text">Cybersecurity</h2>
+    <section class="container">
+      
+      <div class="certi-grid" id="cybersecurity-container">
+        <!-- Cybersecurity cards will be dynamically inserted here -->
+      </div>
+    </section>
+
+    <!-- Cloud Category -->
+     <h2 class="animated-text">Cloud & ML</h2>
+    <section class="container"></section>
+      
+      <div class="certi-grid" id="cloud-container">
+        <!-- Cloud cards will be dynamically inserted here -->
+      </div>
+    </section>
+    
+    <!-- Development Category -->
+     <h2 class="animated-text">Development</h2>
+    <section class="container"></section>
+      
+      <div class="certi-grid" id="development-container">
+        <!-- Development cards will be dynamically inserted here -->
+      </div>
+    </section>
+    
+  </main>
+  <script>
+    // Certificates data categorized by type
+    const cybersecurityCertificates = [
+      {
+        "name": "Google Cybersecurity",
+        "issuer": "Google Specialization",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "8MR96YWD6RAT",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/professional-cert\/8MR96YWD6RAT"
+      },
+      {
+        "name": "IBM Cybersecurity Analyst",
+        "issuer": "IBM Specialization",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "GWGWG5KWVN7V",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/professional-cert\/GWGWG5KWVN7V"
+      },
+      {
+        "name": "Cybersecurity Threat Vectors and Mitigation",
+        "issuer": "Microsoft",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "V9H5ETK2KJGG",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/V9H5ETK2KJGG"
+      },
+      {
+        "name": "CYBER SECURITY EXPERT",
+        "issuer": "IONX",
+        "platform": "Institute",
+        "issue_date": "Dec-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "AHM-ASH-23-163",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/11qN0zJceafIUItv5jYMcftOohTxgv8aq\/view?usp=drive_link"
+      },
+      {
+        "name": "NETWORK & NETWORK SECURITY ASSOCIATE",
+        "issuer": "IONX",
+        "platform": "Institute",
+        "issue_date": "Dec-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "AHM-ASH-23-161",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/1GHVu7w5wfSNYRDZiW8w0_PaQWzeOs-KB\/view?usp=drive_link"
+      },
+      {
+        "name": "IONX Hackathon (Rank-9)",
+        "issuer": "IONX",
+        "platform": "Institute",
+        "issue_date": "Sep-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "AHM-0723-025",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/18R871K1lQazfpmrI3w9wwflB6HyD6kxX\/view?usp=drive_link"
+      },
+      {
+        "name": "IONX QUIZ (Rank-4)",
+        "issuer": "IONX",
+        "platform": "Institute",
+        "issue_date": "Sep-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "AHM-0723-035",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/1HW2m3dA6BH630hxPEz3KEuDwc-gFGyw2\/view?usp=drive_link"
+      },
+      {
+        "name": "Capture The Flag",
+        "issuer": "Techkriti",
+        "platform": "IIT Kanpur",
+        "issue_date": "Mar-25",
+        "expiry_date": "No Expiry",
+        "credential_id": "Particitaion",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/1qWzG0S24MG6P6sp6pVCn8UWPG3SNpgcM\/view?usp=drive_link"
+      },
+      {
+        "name": "Enterprise and Infrastructure Security",
+        "issuer": "New York University",
+        "platform": "Coursera",
+        "issue_date": "Mar-24",
+        "expiry_date": "No Expiry",
+        "credential_id": "CPUDD49PZHH4",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/CPUDD49PZHH4"
+      },
+      {
+        "name": "Foundations of Cybersecurity",
+        "issuer": "Google Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "75AQKEVTH46H",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/75AQKEVTH46H"
+      },
+      {
+        "name": "Play It Safe: Manage Security Risks",
+        "issuer": "Google Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "7VPHMB7KRKU6",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/7VPHMB7KRKU6"
+      },
+      {
+        "name": "Connect and Protect: Networks and Network Security",
+        "issuer": "Google Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "FJBR4A5VCR62",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/FJBR4A5VCR62"
+      },
+      {
+        "name": "Tools of the Trade: Linux and SQL",
+        "issuer": "Google Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "SVM2CYKYBTSK",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/SVM2CYKYBTSK"
+      },
+      {
+        "name": "Assets, Threats, and Vulnerabilities",
+        "issuer": "Google Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "QZTTPTEVL9FM",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/QZTTPTEVL9FM"
+      },
+      {
+        "name": "Sound the Alarm: Detection and Response",
+        "issuer": "Google Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "834E6JU5UFZL",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/834E6JU5UFZL"
+      },
+      {
+        "name": "Automate Cybersecurity Tasks with Python",
+        "issuer": "Google Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "GMELMW8XDNS4",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/GMELMW8XDNS4"
+      },
+      {
+        "name": "Put It to Work: Prepare for Cybersecurity Jobs",
+        "issuer": "Google Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "MLP682Y7B69H",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/MLP682Y7B69H"
+      },
+      {
+        "name": "Introduction to Cybersecurity Tools & Cyber Attacks",
+        "issuer": "IBM Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "WWSH5EQK4Z8A",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/WWSH5EQK4Z8A"
+      },
+      {
+        "name": "Operating Systems: Overview, Administration, and Security",
+        "issuer": "IBM Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "CBBHC5Z8TQ4P",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/CBBHC5Z8TQ4P"
+      },
+      {
+        "name": "Cybersecurity Compliance Framework & System Administration",
+        "issuer": "IBM Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "BARUKVWTU92A",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/BARUKVWTU92A"
+      },
+      {
+        "name": "Network Security & Database Vulnerabilities",
+        "issuer": "IBM Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "83TMFFBJB85Q",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/83TMFFBJB85Q"
+      },
+      {
+        "name": "Penetration Testing, Incident Response and Forensics",
+        "issuer": "IBM Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "GC9WVM9YPHXZ",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/GC9WVM9YPHXZ"
+      },
+      {
+        "name": "Incident Response and Digital Forensics",
+        "issuer": "IBM Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "8JWL6BSTGTJ5",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/8JWL6BSTGTJ5"
+      },
+      {
+        "name": "Cybersecurity Capstone: Breach Response Case Studies",
+        "issuer": "IBM Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "CSUK5NXBYB4W",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/CSUK5NXBYB4W"
+      },
+      {
+        "name": "Cybersecurity Assessment: CompTIA Security+ & CYSA+",
+        "issuer": "IBM Cybersecurity",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "7QHJDUTNEESJ",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/7QHJDUTNEESJ"
+      },
+      {
+        "name": "Introduction to Computers and Operating Systems and Security",
+        "issuer": "Microsoft",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "2HTM8V5SH9US",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/2HTM8V5SH9US"
+      },
+      {
+        "name": "Introduction to Networking and Cloud Computing",
+        "issuer": "Microsoft",
+        "platform": "Coursera",
+        "issue_date": "Aug-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "CBT26VL9E8B4",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/CBT26VL9E8B4"
+      },
+      {
+        "name": "Introduction to Cybersecurity Essentials",
+        "issuer": "IBM",
+        "platform": "Coursera",
+        "issue_date": "Jul-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "YWPBBXYCTRVJ",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/YWPBBXYCTRVJ"
+      }
+    ];
+
+    const cloudCertificates = [
+      {
+        "name": "CLOUD ASSOCIATE ARCHITECT \"AWS\"",
+        "issuer": "IONX",
+        "platform": "Institute",
+        "issue_date": "Dec-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "AHM-ASH-23-162",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/1AJ2EVrhyUrG4XBAn4Sd8paL7ASLgrWMN\/view?usp=sharing"
+      },
+      {
+        "name": "ML Hackathon",
+        "issuer": "Techkriti",
+        "platform": "IIT Kanpur",
+        "issue_date": "Mar-25",
+        "expiry_date": "No Expiry",
+        "credential_id": "Particitaion",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/1BWHDgFZC9rBCJ__u3dq-GLuxzQbB8TOt\/view?usp=drive_link"
+      }
+    ];
+
+    const developmentCertificates = [
+      {
+        "name": "CodeNCompete",
+        "issuer": "Techkriti",
+        "platform": "IIT Kanpur",
+        "issue_date": "Mar-25",
+        "expiry_date": "No Expiry",
+        "credential_id": "Particitaion",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/1q99FYn8unjQ8s7dBTBQtMeEdDjedLnCV\/view?usp=sharing"
+      },
+      {
+        "name": "Build a Firebase Android Application (Part II)",
+        "issuer": "Coursera",
+        "platform": "Coursera",
+        "issue_date": "Mar-24",
+        "expiry_date": "No Expiry",
+        "credential_id": "P8G4FQNNTT2C",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/P8G4FQNNTT2C"
+      },
+      {
+        "name": "Build a Firebase Android Application",
+        "issuer": "Coursera",
+        "platform": "Coursera",
+        "issue_date": "Feb-24",
+        "expiry_date": "No Expiry",
+        "credential_id": "G7MSUDJF9FEQ",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/G7MSUDJF9FEQ"
+      },
+      {
+        "name": "Create an Android App with Kotlin",
+        "issuer": "Coursera",
+        "platform": "Coursera",
+        "issue_date": "Feb-24",
+        "expiry_date": "No Expiry",
+        "credential_id": "R3U9FKG2P9MP",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/R3U9FKG2P9MP"
+      }, 
+      {
+        "name": "Capstone: Retrieving, Processing, and Visualizing Data with Python",
+        "issuer": "University of Michigan",
+        "platform": "Coursera",
+        "issue_date": "Jul-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "8CGZGK6HST2M",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/8CGZGK6HST2M"
+      },
+      {
+        "name": "Using Python to Access Web Data",
+        "issuer": "University of Michigan",
+        "platform": "Coursera",
+        "issue_date": "Jul-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "DZAXB58QRSW3",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/DZAXB58QRSW3"
+      },
+      {
+        "name": "Python Data Structures",
+        "issuer": "University of Michigan",
+        "platform": "Coursera",
+        "issue_date": "Jul-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "U88X2ZVJX3CN",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/U88X2ZVJX3CN"
+      },
+      {
+        "name": "Programming for Everybody (Getting Started with Python)",
+        "issuer": "University of Michigan",
+        "platform": "Coursera",
+        "issue_date": "Jul-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "XVZ3EJTF7BAR",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/XVZ3EJTF7BAR"
+      },
+      {
+        "name": "Foundations of Digital Marketing and E-commerce",
+        "issuer": "Google",
+        "platform": "Coursera",
+        "issue_date": "Jul-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "NH7TFBAXRVD4",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/NH7TFBAXRVD4"
+      },
+      {
+        "name": "Introduction to Object-Oriented Programming with Java",
+        "issuer": "Learn Quest",
+        "platform": "Coursera",
+        "issue_date": "Apr-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "YGEUM8N3ZW59",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/YGEUM8N3ZW59"
+      },
+      {
+        "name": "Google SEO Fundamentals",
+        "issuer": "University of California, Davis",
+        "platform": "Coursera",
+        "issue_date": "Apr-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "ZFPQXEKWZS7P",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/ZFPQXEKWZS7P"
+      },
+      {
+        "name": "SQL (Basic)",
+        "issuer": "HackerRank",
+        "platform": "HackerRank",
+        "issue_date": "Feb-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "B39239E5CD07",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/1f4g-lL-P45IXS09DHwaF5GW2fS6Us6AX\/view?usp=drive_link"
+      },
+      {
+        "name": "SQL (Intermediate)",
+        "issuer": "HackerRank",
+        "platform": "HackerRank",
+        "issue_date": "Feb-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "D8DD8821F61D",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/14SoJsznIBpA6uiJ8XN4ySuQW46Bw_eTJ\/view?usp=drive_link"
+      },
+      {
+        "name": "SQL (Advanced)",
+        "issuer": "HackerRank",
+        "platform": "HackerRank",
+        "issue_date": "Feb-23",
+        "expiry_date": "No Expiry",
+        "credential_id": "1EF164DEDECE",
+        "credential_url": "https:\/\/drive.google.com\/file\/d\/1aYFClyqxV8zUjL-cUl2bwCwBMOnRw7pb\/view?usp=drive_link"
+      },
+      {
+        "name": "Introduction to C# Programming and Unity",
+        "issuer": "University of Colorado",
+        "platform": "Coursera",
+        "issue_date": "Aug-22",
+        "expiry_date": "No Expiry",
+        "credential_id": "38C9K2SGDJGB",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/38C9K2SGDJGB"
+      },
+      {
+        "name": "C++ For C Programmers, Part A",
+        "issuer": "University of California SANTA CRUZ",
+        "platform": "Coursera",
+        "issue_date": "Aug-22",
+        "expiry_date": "No Expiry",
+        "credential_id": "GZXPBUC9JUBJ",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/GZXPBUC9JUBJ"
+      },
+      {
+        "name": "Introduction to Relational Databases (RDBMS)",
+        "issuer": "IBM",
+        "platform": "Coursera",
+        "issue_date": "Mar-22",
+        "expiry_date": "No Expiry",
+        "credential_id": "HBP8YKQTFKH9",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/HBP8YKQTFKH9"
+      },
+      {
+        "name": "Interactivity with JavaScript",
+        "issuer": "University of Michigan",
+        "platform": "Coursera",
+        "issue_date": "Mar-22",
+        "expiry_date": "No Expiry",
+        "credential_id": "6458GYFTQL3Q",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/6458GYFTQL3Q"
+      },
+      {
+        "name": "Fundamentals of Visualization with Tableau",
+        "issuer": "University of California, Davis",
+        "platform": "Coursera",
+        "issue_date": "Mar-22",
+        "expiry_date": "No Expiry",
+        "credential_id": "G72583WEKCQ2",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/G72583WEKCQ2"
+      },
+      {
+        "name": "C for Everyone: Structured Programming",
+        "issuer": "University of California SANTA CRUZ",
+        "platform": "Coursera",
+        "issue_date": "Jan-22",
+        "expiry_date": "No Expiry",
+        "credential_id": "YTKELAXJPAUZ",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/YTKELAXJPAUZ"
+      },
+      {
+        "name": "Introduction to HTML5",
+        "issuer": "University of Michigan",
+        "platform": "Coursera",
+        "issue_date": "Dec-21",
+        "expiry_date": "No Expiry",
+        "credential_id": "TFE4MLKXCCFV",
+        "credential_url": "https:\/\/www.coursera.org\/account\/accomplishments\/verify\/TFE4MLKXCCFV"
+      }
+    ];
+
+    // Function to generate cards for each category
+    function generateCards() {
+      // Function to create the certificate card HTML
+      function createCard(cert) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        // Card content
+        const nameDiv = document.createElement('div');
+        nameDiv.classList.add('card-name');
+        nameDiv.innerHTML = `<h3>${cert.name}</h3>`;
+
+        const buttonDiv = document.createElement('div');
+        buttonDiv.classList.add('card-button');
+        const viewMoreBtn = document.createElement('span');
+        viewMoreBtn.classList.add('view-more');
+        viewMoreBtn.textContent = 'View More';
+        viewMoreBtn.addEventListener('click', () => toggleDetails(card, viewMoreBtn));
+        buttonDiv.appendChild(viewMoreBtn);
+
+        const detailsDiv = document.createElement('div');
+        detailsDiv.classList.add('details');
+        detailsDiv.innerHTML = `
+          <p><strong>Issuer:</strong> ${cert.issuer}</p>
+          <p><strong>Platform:</strong> ${cert.platform}</p>
+          <p><strong>Issue Date:</strong> ${cert.issue_date}</p>
+          <p><strong>Expiry Date: </strong><i><u> ${cert.expiry_date}</i></u></p>
+          <p><strong>Credential ID:</strong> ${cert.credential_id}</p>
+        `;
+
+        const viewCertificateLink = document.createElement('a');
+        viewCertificateLink.classList.add('view-certificate');
+        viewCertificateLink.href = cert.credential_url;
+        viewCertificateLink.target = '_blank';
+        viewCertificateLink.textContent = 'View Certificate';
+
+        // Append elements to the card
+        card.appendChild(nameDiv);
+        card.appendChild(buttonDiv);
+        card.appendChild(detailsDiv);
+        card.appendChild(viewCertificateLink);
+
+        return card;
+      }
+
+      // Insert cybersecurity certificates
+      const cybersecurityContainer = document.getElementById('cybersecurity-container');
+      cybersecurityCertificates.forEach(cert => {
+        cybersecurityContainer.appendChild(createCard(cert));
+      });
+
+      // Insert cloud certificates
+      const cloudContainer = document.getElementById('cloud-container');
+      cloudCertificates.forEach(cert => {
+        cloudContainer.appendChild(createCard(cert));
+      });
+
+      // Insert development certificates
+      const developmentContainer = document.getElementById('development-container');
+      developmentCertificates.forEach(cert => {
+        developmentContainer.appendChild(createCard(cert));
+      });
+    }
+
+    // Toggle details visibility on 'View More' click
+    function toggleDetails(card, button) {
+      const detailsDiv = card.querySelector('.details');
+      const expanded = card.classList.contains('expanded');
+      if (expanded) {
+        detailsDiv.style.display = 'none';
+        card.classList.remove('expanded');
+        button.textContent = 'View More';
+      } else {
+        detailsDiv.style.display = 'block';
+        card.classList.add('expanded');
+        button.textContent = 'View Less';
+      }
+    }
+
+    // Initialize the card generation
+    generateCards();
+  </script>
+  
+  <div id="footer"></div>
+</body>
+</html>

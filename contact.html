@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link id="favicon" rel="icon" href="my-pic.jpg" type="image/jpg">
+  <script>
+    setInterval(() => document.getElementById('favicon').href = 'my-pic.jpg?' + new Date().getTime(), 1000);
+  </script>
+  <title>Contact | Aayush Shah</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="header-footer.js" defer></script>
+  <script src="sidebar.js" defer></script>
+  <script src="theme.js" defer></script>
+
+  <style>
+    /* Basic page styling */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin-top: 10px;
+    }
+
+    /* Container box */
+    .contact-box {
+      width: 60%;
+      height: auto;
+      max-width: 700px;
+      margin: 0 auto;
+      margin-top: 90px;
+      margin-bottom: 110px;
+      padding-left: 20px;
+      border: 2px solid var(--accent-color);
+      box-shadow: 0px 0px 20px var(--accent-color);
+      border-radius: 10px;
+      background-color: #222222;
+    }
+
+    /* Header styling */
+    h1 {
+      text-align: center;
+      color: var(--accent-color);
+      font-size: 2.5vw;
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    table td {
+      padding: 2px 0;
+    }
+
+    table td strong {
+      font-size: 1.2vw;
+    }
+
+    table td a {
+      color: var(--accent-color);
+      font-size: 1.2vw;
+    }
+
+    /* ✅ Mobile styles only (preserves PC look) */
+    @media (max-width: 768px) {
+      .contact-box {
+        width: 90%;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-top: 60px;
+        margin-bottom: 80px;
+        box-shadow: 0px 0px 15px var(--accent-color);
+      }
+
+      h1 {
+        font-size: 6vw;
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+
+      table td strong {
+        font-size: 4vw;
+      }
+
+      table td a,
+      table td {
+        font-size: 3.8vw;
+        word-break: break-word;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <main class="animate-contact">
+    <!-- Contact Information Box -->
+    <div class="contact-box">
+      <h1 class="animated-text">Contact Information</h1>
+      <table>
+        <tr>
+          <td><strong>Name:</strong></td>
+          <td class="animated-text">Aayush Shah</td>
+        </tr>
+        <tr>
+          <td><strong>Email:</strong></td>
+          <td><a href="mailto:contactaayushshah@gmail.com">contactaayushshah@gmail.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Phone:</strong></td>
+          <td><a href="tel:+919428747500">+91 94287 47500</a></td>
+        </tr>
+        <tr>
+          <td><strong>WhatsApp:</strong></td>
+          <td><a href="https://wa.me/+919428747500" target="_blank">Message on WhatsApp</a></td>
+        </tr>
+        <tr>
+          <td><strong>LinkedIn:</strong></td>
+          <td><a href="https://www.linkedin.com/in/aayushshahprofile/" target="_blank">linkedin.com/in/aayushshahprofile</a></td>
+        </tr>
+        <tr>
+          <td><strong>GitHub:</strong></td>
+          <td><a href="https://github.com/aayush61203" target="_blank">github.com/aayush</a></td>
+        </tr>
+        <tr>
+          <td><strong>Resume:</strong></td>
+          <td><a href="Aayush Shah Resume.pdf" target="_blank">📄 View/Download Resume</a></td>
+        </tr>
+        <tr>
+          <td><strong>Location:</strong></td>
+          <td class="animated-text">Ahmedabad, Gujarat, India</td>
+        </tr>
+      </table>
+    </div>
+  </main>
+  <div id="footer"></div>
+</body>
+</html>
