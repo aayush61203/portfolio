@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link id="favicon" rel="icon" href="my-pic.jpg" type="image/jpg">
+  <script>
+    setInterval(() => document.getElementById('favicon').href = 'my-pic.jpg?' + new Date().getTime(), 1000);
+  </script>
+  <title>Projects | Aayush Shah</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="header-footer.js" defer></script>
+  <script src="theme.js" defer></script>
+  <script src="sidebar.js" defer></script>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin-top: 55px;
+      margin-bottom: 70px;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+      color: var(--accent-color);
+    }
+
+
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .project-card {
+      height: auto;
+      width: auto;
+      border: 1px solid var(--accent-color);
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 8px var(--accent-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .project-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px var(--accent-color);
+    }
+
+    .project-card h3 {
+      color: var(--accent-color);
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: #ccc;
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background-color: var(--accent-color);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .project-card a:hover {
+      background-color: #0097a7;
+    }
+
+    .error-message {
+      text-align: center;
+      color: #ff6b6b;
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <main class="animate-contact">
+    <section class="projects">
+      <h1 class="animated-text">Projects</h1>
+      <div id="projects-container" class="projects-grid">
+        <!-- Project cards will be injected here -->
+      </div>
+      <div id="error-message" class="error-message"></div>
+    </section>
+  </main>
+  <script>
+    const username = 'aayush61203'; // Replace with your GitHub username
+    const projectsContainer = document.getElementById('projects-container');
+    const errorMessage = document.getElementById('error-message');
+
+    function formatRepoTitle(title) {
+      // Replace hyphens and underscores with spaces
+      let formattedTitle = title.replace(/[-_]+/g, ' ');
+      // Remove leading/trailing spaces and collapse multiple spaces into one
+      formattedTitle = formattedTitle.replace(/\s+/g, ' ').trim();
+      return formattedTitle;
+    }
+
+    // Predefined order of repo names (example)
+    const predefinedOrder = [
+      'Smart_Income_Expense_Tracker_App_Android_Kotlin-Firebase', 
+      'RealTime-Collab-Django', 
+      'NewswireHub---Kotlin-News-App-with-NewsAPI-Integration', 
+      'FileManagementSystem-Java', 
+      'MotivationQuotesApp-Kotlin', 
+      'Data-Analysis-Tool-CSV-File-Manipulation', 
+      'Grocery-Store-Management-System-C', 
+      'airline-reservation-system-php', 
+      'Pizza-Restaurant-Website-html', 
+      'Airline-Reservation-System'
+    ];
+
+    fetch(`https://api.github.com/users/${username}/repos`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(repos => {
+        if (repos.length === 0) {
+          errorMessage.textContent = 'No repositories found.';
+          return;
+        }
+
+        // Sort repos by predefined order, if not found, add them at last
+        const orderedRepos = [];
+          // Add this array with repo names you want to exclude
+        const excludedRepos = ['portfolio']; // Add more repo names to exclude as needed
+
+        // Add repos that are in predefinedOrder
+        predefinedOrder.forEach(repoName => {
+          const repo = repos.find(r => r.name === repoName);
+          if (repo) orderedRepos.push(repo);
+        });
+
+        // Add repos not in predefinedOrder to the end
+        repos.forEach(repo => {
+          if (!orderedRepos.some(r => r.name === repo.name)) {
+            orderedRepos.push(repo);
+          }
+        });
+
+        // Create project cards for each repo in orderedRepos
+        orderedRepos.forEach(repo => {
+          if (excludedRepos.includes(repo.name)) return; // Skip excluded repos
+          const card = document.createElement('div');
+          card.className = 'project-card';
+
+          const title = document.createElement('h3');
+          title.textContent = formatRepoTitle(repo.name);
+
+          const description = document.createElement('p');
+          description.textContent = repo.description || 'No description provided.';
+
+          const link = document.createElement('a');
+          link.href = repo.html_url;
+          link.target = '_blank';
+          link.textContent = 'Unlock the Code 🔓';
+
+          card.appendChild(title);
+          card.appendChild(description);
+          card.appendChild(link);
+
+          projectsContainer.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching repositories:', error);
+        errorMessage.textContent = 'Failed to load projects. Please check your internet connection.';
+      });
+  </script>
+  <div id="footer"></div>
+</body>
+</html>
